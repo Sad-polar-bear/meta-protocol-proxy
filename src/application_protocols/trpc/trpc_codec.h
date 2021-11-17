@@ -42,12 +42,13 @@ public:
 
 private:
   void toMetadata(MetaProtocolProxy::Metadata& metadata);
-  void toTrpcHeader(const MetaProtocolProxy::Metadata& metadata, trpc::ResponseProtocol& header);
 
 private:
   CodecChecker decoder_base_;
-  trpc::RequestProtocol header_;
+  trpc::RequestProtocol requestHeader_;
+  trpc::ResponseProtocol responseHeader_;
   std::unique_ptr<Buffer::OwnedImpl> origin_msg_;
+  MetaProtocolProxy::Metadata& metadata_;
 };
 
 } // namespace Trpc
